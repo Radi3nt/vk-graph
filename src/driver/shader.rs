@@ -1286,7 +1286,8 @@ impl Shader {
                 .as_ref()
                 .filter(|name| name.contains("_ibind") || name.contains("_vbind"))
                 .map(|name| {
-                    let binding = name[name.rfind("bind").expect("missing bind suffix")..]
+                    let binding = name
+                        [name.rfind("bind").expect("missing bind suffix") + "bind".len()..]
                         .parse()
                         .unwrap_or_default();
                     let rate = if name.contains("_ibind") {
